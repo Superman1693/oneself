@@ -4,15 +4,21 @@
 
 ## 项目结构
 
-- `index.html`：首页（Hero + 导航卡片），作为入口。
+- `index.html`：首页（Hero + 导航卡片 + 打字机 + 主题切换）。
 - `about.html`：关于页面。
 - `projects.html`：项目列表页面，卡片形式展示。
 - `notes.html`：学习笔记列表页面，卡片形式展示。
-- `design.html`：设计卡片页面。
+- `design.html`：学习课程进度页（进度条卡片）。
 - `contact.html`：联系方式页面。
-- `styles.css`：全局样式与响应式布局，暗色简约风格。
-- `scripts/data.js`：站点数据源，包含项目、笔记、设计卡片内容，便于后续扩展。
-- `scripts/main.js`：数据渲染脚本，将内容注入页面。
+- `styles.css`：全局样式与响应式布局，支持暗/亮主题。
+- `scripts/data.js`：站点数据源，包含项目、笔记、设计卡片内容。
+- `scripts/main.js`：数据渲染 + 主题切换 + 打字机 + 懒加载。
+- `assets/vendor/`：本地化依赖（Bootstrap、NProgress、Highlight 明/暗、jQuery、Typed.js、iconfont 占位）。
+
+## 依赖/资源（已本地化，无需外网）
+
+- CSS：`assets/vendor/bootstrap.min.css`、`nprogress.css`、`highlight-github*.css`、`iconfont.css`（占位）。
+- JS：`assets/vendor/jquery.min.js`、`bootstrap.bundle.min.js`、`nprogress.js`、`typed.min.js`；懒加载逻辑在 `scripts/main.js` 内置。
 
 ## 本地预览
 
@@ -48,8 +54,9 @@ git push -u origin main
 
 ## 设计与交互
 
-- 暗色基调、留白与轻动效，突出内容。
-- 卡片 hover 态、锚点导航、响应式布局。
+- 双主题：暗/亮切换（按钮在导航栏），Highlight 样式随主题切换。
+- 体验优化：NProgress 页面加载条、Hero 打字机效果、图片懒加载。
+- 样式：留白、轻动效、卡片 hover、响应式布局。
 
 ## 未来可扩展方向
 

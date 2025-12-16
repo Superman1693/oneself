@@ -68,10 +68,69 @@ const renderDesign = () => {
     .join('');
 };
 
+const setupTypedHero = () => {
+  const target = document.querySelector('#hero-typed');
+  if (!target || !window.Typed) return;
+  const sentences = [
+    '这个网站记录我的项目实践、学习笔记以及设计思考。',
+    '保持克制与长期主义，持续迭代 Web 能力。',
+    '写清楚、想清楚、做扎实。',
+  ];
+  // eslint-disable-next-line no-new
+  new window.Typed('#hero-typed', {
+    strings: sentences,
+    typeSpeed: 50,
+    backSpeed: 26,
+    backDelay: 1800,
+    loop: true,
+    showCursor: true,
+  });
+};
+
+const setupLazyImages = () => {
+  const images = Array.from(document.querySelectorAll('img[data-lazy]'));
+  if (!images.length) return;
+  const onIntersect = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      img.src = img.dataset.lazy;
+      img.removeAttribute('data-lazy');
+      observer.unobserve(img);
+    });
+  };
+  const observer = new IntersectionObserver(onIntersect, { rootMargin: '120px' });
+  images.forEach((img) => observer.observe(img));
+};
+
+const setupThemeToggle = () => {
+  const btn = document.querySelector('#theme-toggle');
+  if (!btn) return;
+  const root = document.documentElement;
+  const hl = document.querySelector('#hl-theme');
+  const lightHref = 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css';
+  const darkHref = 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css';
+  const applyTheme = (mode) => {
+    root.dataset.theme = mode;
+    localStorage.setItem('theme', mode);
+    if (hl) hl.href = mode === 'dark' ? darkHref : lightHref;
+    btn.textContent = mode === 'dark' ? '☀️' : '🌙';
+  };
+  const saved = localStorage.getItem('theme');
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
+  btn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+};
+
 const init = () => {
   renderProjects();
   renderNotes();
   renderDesign();
+  setupTypedHero();
+  setupLazyImages();
+  setupThemeToggle();
 };
 
 document.addEventListener('DOMContentLoaded', init);

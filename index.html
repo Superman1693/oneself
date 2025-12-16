@@ -7,7 +7,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/nprogress.css">
+  <link rel="stylesheet" href="assets/vendor/highlight-github.min.css" id="hl-theme">
+  <link rel="stylesheet" href="assets/vendor/iconfont.css">
   <link rel="stylesheet" href="styles.css">
+  <script src="assets/vendor/nprogress.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => window.NProgress && window.NProgress.start());
+    window.addEventListener('load', () => window.NProgress && window.NProgress.done());
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -20,6 +29,7 @@
       <a href="design.html">Design</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="toggle theme">🌙</button>
   </header>
 
   <main>
@@ -28,7 +38,7 @@
         <p class="eyebrow">Hi, I'm feng gu</p>
         <div class="hero-avatar">
           <div class="avatar-circle">
-            <img src="avatar.jpg" alt="峰古个人头像">
+            <img src="avatar.jpg" data-lazy="avatar.jpg" alt="峰古个人头像">
           </div>
           <div>
             <p class="avatar-meta-main">峰古 · Feng Gu</p>
@@ -37,7 +47,7 @@
         </div>
         <h1>理性克制的 全栈 学习者</h1>
         <p class="lede">
-          我是一名大帅比。这个网站记录我的项目实践、学习笔记以及设计思考。
+          <span id="hero-typed">这个网站记录我的项目实践、学习笔记以及设计思考。</span>
         </p>
         <div class="cta-group">
           <a class="btn primary" href="projects.html">查看项目</a>
@@ -98,6 +108,9 @@
     <p>© 2025 Feng Gu · Built for long-term learning and sharing.</p>
   </footer>
 
+  <script src="assets/vendor/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/typed.min.js"></script>
   <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

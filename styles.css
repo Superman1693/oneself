@@ -10,6 +10,18 @@
   --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.06);
 }
 
+html[data-theme="dark"] {
+  --bg: #0c0f14;
+  --panel: #11161f;
+  --card: #0f141c;
+  --border: #1f2734;
+  --text: #e7eaf0;
+  --muted: #9aa2b3;
+  --accent: #7aa5ff;
+  --accent-strong: #5c8bff;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
 *,
 *::before,
 *::after {
@@ -47,6 +59,10 @@ p {
   border-bottom: 1px solid var(--border);
 }
 
+html[data-theme="dark"] .site-header {
+  background: rgba(12, 15, 20, 0.9);
+}
+
 .logo {
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -68,6 +84,21 @@ p {
 .nav a:hover {
   background: rgba(15, 23, 42, 0.04);
   color: var(--text);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.5);
 }
 
 main {
